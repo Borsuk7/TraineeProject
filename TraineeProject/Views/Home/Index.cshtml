@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-dark">
+    <h3>Select file for upload</h3>
+    <form asp-action="AddFile" asp-controller="Home" method="post" enctype="multipart/form-data">
+        <input type="file" name="uploadedFile" class="btn" /><br>
+        <input type="submit" value="Upload" class="btn btn-success" />
+    </form>
+    @if (ViewBag.error is not null)
+    {
+        <h4>@ViewBag.error</h4>
+    }
+
+</div>

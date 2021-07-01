@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TraineeProject.Models.Person>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List of person</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create</a>
+</p>
+<table class="table text-center" id="myTable">
+    <thead>
+        <tr>
+            <th onclick="sortTable(0)">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th onclick="sortTable(1)">
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th onclick="sortTable(2)">
+                @Html.DisplayNameFor(model => model.Married)
+            </th>
+            <th onclick="sortTable(3)">
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th onclick="sortTable(4)">
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.BirthDate.ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Married)
+                </td>
+                <td>
+                    @item.Phone
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)$
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info">Edit</a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
